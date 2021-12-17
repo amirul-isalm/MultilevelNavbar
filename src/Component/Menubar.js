@@ -1,9 +1,12 @@
 import React, { useEffect } from 'react';
 import { CarouselItem, Col, Dropdown, Row } from 'react-bootstrap';
+
 import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import "./Menubar.css"
 
 const Menubar = ({ parent, catagory }) => {
+    const history=useHistory()
     
     console.log(parent,catagory)
     let leftThird=["Left Third 1"," Left Third 2"," Left Third 3","Left Third 4"]
@@ -16,7 +19,9 @@ const Menubar = ({ parent, catagory }) => {
     let rightSecond=["Right Secont 1"," Right Second 2",rightThird," Right Second 3","Right Second 4"]
     let rightFirst=["Right First 1"," Right First 2"," Right First 3",rightSecond,"Right First 4"]
 
-console.log(parent)
+    const transfar = (name) => {
+    history.push(`/catagory/${name}`)
+}
 
    switch (parent) {
      case "leftFirst":
@@ -79,14 +84,14 @@ console.log(parent)
 
                               <Dropdown.Menu className="childMenu">
                                 {leftThird.map((item) => (
-                                  <Dropdown.Item key={item} href="#">
+                                  <Dropdown.Item key={item} as={Link} onClick={()=>transfar(item)}>
                                     {item}
                                   </Dropdown.Item>
                                 ))}
                               </Dropdown.Menu>
                             </Dropdown>
                           ) : (
-                            <Dropdown.Item key={item} href="#">
+                            <Dropdown.Item key={item} as={Link} onClick={()=>transfar(item)}>
                               {item}
                             </Dropdown.Item>
                           )
@@ -94,7 +99,7 @@ console.log(parent)
                       </Dropdown.Menu>
                     </Dropdown>
                   ) : (
-                    <Dropdown.Item key={item} href="#">
+                    <Dropdown.Item key={item} as={Link} onClick={()=>transfar(item)}>
                       {item}
                     </Dropdown.Item>
                   )
@@ -133,14 +138,14 @@ console.log(parent)
 
                               <Dropdown.Menu className="childMenu">
                                 {rightThird.map((item, index) => (
-                                  <Dropdown.Item key={item} href="#">
+                                  <Dropdown.Item key={item} as={Link} onClick={()=>transfar(item)}>
                                     {item}
                                   </Dropdown.Item>
                                 ))}
                               </Dropdown.Menu>
                             </Dropdown>
                           ) : (
-                            <Dropdown.Item key={item} href="#">
+                            <Dropdown.Item key={item} as={Link} onClick={()=>transfar(item)}>
                               {item}
                             </Dropdown.Item>
                           )
@@ -148,7 +153,7 @@ console.log(parent)
                       </Dropdown.Menu>
                     </Dropdown>
                   ) : (
-                    <Dropdown.Item key={item} href="#">
+                    <Dropdown.Item key={item} as={Link} onClick={()=>transfar(item)}>
                       {item}
                     </Dropdown.Item>
                   )

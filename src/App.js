@@ -4,6 +4,7 @@ import Menubar from "./Component/Menubar";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import AddCatagory from "./Component/AddCatagory";
 import { useState } from "react";
+import DynamicPage from "./Component/DynamicPage";
 
 function App() {
 
@@ -21,6 +22,11 @@ const [catagory,setCatagory]=useState("")
           </Route>
           <Route path="/addCatagory">
             <AddCatagory setCatagory={setCatagory} setParent={setParent} />
+          </Route>
+          <Route path="/catagory/:name">
+
+<DynamicPage/>
+
           </Route>
         </Switch>
       </BrowserRouter>
