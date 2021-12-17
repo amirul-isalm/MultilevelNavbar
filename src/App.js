@@ -14,7 +14,7 @@ const [catagory,setCatagory]=useState("")
   return (
     <div className="App">
       <BrowserRouter>
-        <Menubar />
+        <Menubar parent={parent} catagory={catagory} />
         <Switch>
           <Route exact path="/">
             <Home />
